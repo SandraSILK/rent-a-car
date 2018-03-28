@@ -15,15 +15,17 @@ class SavedCarTable extends Migration
     {
         Schema::create('saved_car', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('adress')->nullable();
-            $table->string('email')->nullable();
-            $table->string('telephone')->nullable();
-            $table->string('car')->nullable();
-            $table->string('date_from')->nullable();
-            $table->string('date_to')->nullable();
-            $table->string('price')->nullable();
+            $table->string('name');
+            $table->string('last_name');
+            $table->string('adress');
+            $table->string('email');
+            $table->string('telephone');
+            $table->string('car');
+            $table->string('date_from');
+            $table->string('date_to');
+            $table->string('price');
+            $table->string('nr_reservation');
+            $table->timestamps();
         });
     }
 

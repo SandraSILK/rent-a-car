@@ -1,20 +1,21 @@
-@extends('layouts.index')
+@extends('layouts.app')
 @section('content')
-
-	<div class="container cars-show">
-		<div class="row">
+	<div class="container car-show">
+		<div class="card-columns">
 			@foreach($cars as $car) 
-				<div class="col-12 col-md-6 car-item">
-					<img src="{{ $car->img_path }}" alt="{{ $car->brand }}">
-					<h4>Marka: {{ $car->brand }} </h4>
-					<p>Model: {{ $car->model }} </p>
-					<p>Rocznik: {{ $car->year }} </p>
-					<p>Przebieg: {{ $car->mileage }} </p>
-					<h4>Cena: {{ $car->price }} </h4>
-					<p>Kolor: {{ $car->colour }} </p>	
-					<a href="{{ route('booked', $car) }}" class="btn btn-success">Rezerwuj</a>
-				</div>
-			@endforeach
+				<div class="card">
+					<img src="{{ $car->img_path }}" alt="{{ $car->brand }}" class="item-img">
+					<div class="card-body">
+						<h4><strong>{{ $car->brand }}</strong></h4>
+						<p>Model: {{ $car->model }} </p>
+						<p>Rocznik: {{ $car->year }} </p>
+						<p>Przebieg: {{ $car->mileage }} </p>
+						<p>Cena: {{ $car->price }} </p>
+						<p>Kolor: {{ $car->colour }} </p>	
+						<a href="{{ route('saved_form', $car) }}" class="btn btn-success">Rezerwuj</a>
+					</div>
+			  	</div>
+		  	@endforeach
 		</div>
 	</div>
 @endsection

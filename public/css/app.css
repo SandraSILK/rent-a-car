@@ -19,6 +19,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
+  --light: #fff;
   --primary: #007bff;
   --secondary: #6c757d;
   --success: #28a745;
@@ -9994,38 +9995,104 @@ a.text-dark:focus {
   }
 }
 
+html,
 body {
-  background-color: #a0b5ca;
+  height: 100%;
 }
 
-.cars-show {
+body {
+  background-color: #52968d;
+}
+
+body h1 {
+  font-size: 3rem;
+}
+
+body h2 {
+  font-size: 2.75rem;
+}
+
+body h3 {
+  font-size: 2.25rem;
+}
+
+body h4 {
+  font-size: 2rem;
+}
+
+body h4 {
+  font-size: 2rem;
+}
+
+body h5 {
+  font-size: 1.75rem;
+}
+
+body h6 {
+  font-size: 1.5rem;
+}
+
+.img-hero {
+  min-height: calc(100vh - 55px);
+  background: url(/images/img-hero.jpg?3797251500e0eb62d3865b76595d66e8);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  padding-top: 25vh;
+}
+
+.img-hero a {
+  color: white;
+}
+
+.img-hero a:hover {
+  text-decoration: none;
+}
+
+.img-hero h1,
+.img-hero h3 {
+  background-color: rgba(0, 105, 92, 0.5);
+  padding: 10px 0;
+  margin-bottom: 0;
+}
+
+.car-show {
   padding: 70px 0;
 }
 
-.car-item {
-  padding: 10px 20px;
+.card-columns {
+  -webkit-columns: 2;
+          columns: 2;
 }
 
-.car-item img {
+.card-columns p {
+  font-size: 1.25rem;
+}
+
+.item-img {
   width: 100%;
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.img-hero {
+.hero-header img {
   width: 100%;
   height: 450px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.hero-title {
+.hero-header h1 {
+  background-color: rgba(0, 105, 92, 0.5);
+  margin-bottom: 0;
   font-size: 3rem;
-  color: #444;
-  font-weight: bold;
   bottom: 0;
   margin-top: -80px;
-  margin-left: 100px;
+  padding-left: 100px;
+  padding-top: 10px;
+  width: 100%;
+  color: #fff;
 }
 

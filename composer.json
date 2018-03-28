@@ -9,6 +9,7 @@
         "barryvdh/laravel-debugbar": "^3.1",
         "fideloper/proxy": "~4.0",
         "illuminate/html": "^5.0",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0"

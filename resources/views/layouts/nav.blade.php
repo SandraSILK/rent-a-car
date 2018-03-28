@@ -10,13 +10,13 @@
         <a class="nav-link" href="{{route('main')}}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('choose_car')}}">Samochody</a>
+        <a class="nav-link" href="{{route('car_list')}}">Samochody</a>
       </li>
+{{--       <li>
+        <a class="nav-link" href="{{route('remove_reservation')}}">Odwołaj rezerwację</a>
+      </li> --}}
       <li class="nav-item">
         <a class="nav-link" href="/login">Zaloguj się</a>
-      </li>
-      <li class="nav-item">
-        {{-- <a class="nav-link" href="{{route('\add-car')}}">Dodaj auto</a> --}}
       </li>
     </ul>
   </div>

@@ -35820,6 +35820,8 @@ module.exports = function(module) {
  */
 
 __webpack_require__("./resources/assets/js/bootstrap.js");
+__webpack_require__("./resources/assets/js/setDate.js");
+__webpack_require__("./resources/assets/js/calculatePrice.js");
 
 /***/ }),
 
@@ -35882,6 +35884,77 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/assets/js/calculatePrice.js":
+/***/ (function(module, exports) {
+
+
+setInterval(calcDays, 300);
+
+function calcDays() {
+	var dateFromVal = document.getElementById('js-date-from').value;
+	var dateToVal = document.getElementById('js-date-to').value;
+
+	// const fromAr = dateFromVal.split("-");
+	// const fromVal = fromAr.push(fromAr.shift());
+
+	// const toAr = dateToVal.split("-");
+	// const toVal = toAr.push(toAr.shift());
+
+	// const fromStr = fromAr.toString();
+	// const toStr = toAr.toString();
+
+	// var dateFrom = fromStr.replace(/,/g, '/');
+	// var dateTo = toStr.replace(/,/g, '/');
+
+	// var dateFrom = dateFromVal.replace(/-/g, '/');
+	// var dateTo = dateToVal.replace(/-/g, '/');
+
+	var from = new Date(dateFromVal);
+	var to = new Date(dateToVal);
+
+	var timeDiff = Math.abs(to.getTime() - from.getTime());
+	var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+	calcPrice(diffDays);
+};
+
+function calcPrice(diffDays) {
+	var priceCal = document.getElementById('js-calculate-price');
+	var priceBasic = document.getElementById('js-basic-price').value;
+
+	if (diffDays < 1) {
+		diffDays = 1;
+	}
+
+	var price = diffDays * priceBasic;
+
+	priceCal.setAttribute('value', price);
+}
+
+/***/ }),
+
+/***/ "./resources/assets/js/setDate.js":
+/***/ (function(module, exports) {
+
+var dateFrom = document.getElementById('js-date-from');
+var dateTo = document.getElementById('js-date-to');
+var today = new Date().toISOString().split('T')[0];
+
+dateFrom.setAttribute('min', today);
+dateTo.disabled = true;
+
+dateFrom.onclick = function () {
+	setMinDate();
+};
+
+function setMinDate() {
+	dateTo.disabled = false;
+	var minDate = dateFrom.value;
+	dateTo.setAttribute('min', minDate);
+}
 
 /***/ }),
 

@@ -17,7 +17,7 @@ class CarsSeeder extends Seeder
             'year'     => 2016,
             'mileage'  => '84 885',
             'price'    => 290,
-            'colour'   => 'biały',
+            'colour'   => 'czarny',
             'reserved' => 0,
            	'img_path' => 'images/volvo.jpg'
         ]);
@@ -28,20 +28,20 @@ class CarsSeeder extends Seeder
             'year'     => 2014,
             'mileage'  => '125 475',
             'price'    => 350,
-            'colour'   => 'czerwony',
+            'colour'   => 'biały',
             'reserved' => 0,
             'img_path' => 'images/mercedes.jpg',
         ]);
 
         DB::table('cars')->insert([
             'brand'    => 'Volkswagen',
-            'model'    => 'Polo',
+            'model'    => 'Passat',
             'year'     => 2017,
             'mileage'  => '12 052',
             'price'    => 129,
-            'colour'   => 'czarny',
+            'colour'   => 'srebrny',
             'reserved' => 0,
-            'img_path' => 'images/polo.jpg',
+            'img_path' => 'images/passat.jpg',
         ]);
 
         DB::table('cars')->insert([
@@ -50,7 +50,7 @@ class CarsSeeder extends Seeder
             'year'     => 2013,
             'mileage'  => '212 052',
             'price'    => 259,
-            'colour'   => 'czerwony',
+            'colour'   => 'czarny',
             'reserved' => 0,
             'img_path' => 'images/audi.jpg',
         ]);
@@ -61,9 +61,9 @@ class CarsSeeder extends Seeder
             'year'     => 2017,
             'mileage'  => '312 052',
             'price'    => 259,
-            'colour'   => 'metalik',
+            'colour'   => 'biały',
             'reserved' => 0,
-            'img_path' => 'images/alfa.jpg',
+            'img_path' => 'images/alfa-romeo.jpg',
         ]);
     }
 }

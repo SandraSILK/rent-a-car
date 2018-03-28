@@ -7,7 +7,6 @@ use App\Cars;
 use App\Test;
 use App\SavedCar;
 use App\AddItem;
-use Input;
     
 class SitesController extends Controller
 {
@@ -28,6 +27,8 @@ class SitesController extends Controller
 
     public function savedCar(Request $request)
     {
+        // $myStr = str_random(60);
+        // dd($myStr);
         $saved_car = new SavedCar();
 
         $saved_car->name = $request->input('name');
@@ -39,30 +40,32 @@ class SitesController extends Controller
         $saved_car->date_from = $request->input('date-from');
         $saved_car->date_to = $request->input('date-to');
         $saved_car->price = $request->input('price');
-
+        $saved_car->nr_reservation = str_random(20);
         $saved_car->save();
         return view('sites.saved-car', compact('saved_car'));
     }
 
-    public function addCar()
+    public function carCreate()
     {
         return view('sites.add-car');
     }
 
-    public function addItem(Cars $car)
+    public function carStore(Request $request)
     {
 
-        // $add_car = new Cars();
-            // dd($add_car);
-            // $add_car->brand = input('brand');
-            // $add_car->model = input('model');
-            // $add_car->year = input('year');
-            // $add_car->mileage = input('mileage');
-            // $add_car->price = input('price');
-            // $add_car->colour = input('colour');
-            // $add_car->img_path = input('img_path');
-            // $add_car->save();
-        dd('brawo!');
-        return view('sites.test');
+        $add_car = Cars::create($request->only([
+            'brand',
+            'model',
+            'year',
+            'mileage',
+            'price',
+            'colour',
+            'img_path',
+            'reserved',
+        ]));
+        
+        return redirect()->route('admin.home')->withFlash(sprintf('Pomyślnie dodano pojazd: %s', $add_car->brand));
     }
 }
+
+
