@@ -14,12 +14,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid dashboard">
         <div class="row">
+            <header class="col-12 text-right">
+                @include('layouts.admin-header')
+            </header>
             <nav class="col-md-2">
-                @include('layouts.auth-nav')
+                @include('layouts.admin-nav')
             </nav>
-            <div class="col-md-10 admin-content">
+            <div class="col-md-10 dashboard-content">
                 @yield('content')
             </div>
         </div>

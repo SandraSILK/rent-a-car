@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-    
-class AddVehicle extends Controller
+use App\Cars;
+
+class AddVehicleController extends Controller
 {
     public function create()
     {
@@ -25,9 +26,9 @@ class AddVehicle extends Controller
             'img_path',
             'reserved',
         ]));
-        
-        return redirect()->route('admin.home')->withFlash(sprintf('Pomyślnie dodano pojazd: %s', $add_car->brand));
+
+        return redirect()
+            ->route('home')
+            ->withFlash(sprintf('Pomyślnie dodano pojazd: %s', $add_car->brand));
     }
 }
-
-

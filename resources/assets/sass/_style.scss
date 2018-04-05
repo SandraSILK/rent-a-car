@@ -22,10 +22,6 @@ body {
 		font-size: map-get($font-sizes, h4);
 	}
 
-	h4 {
-		font-size: map-get($font-sizes, h4);
-	}
-
 	h5 {
 		font-size: map-get($font-sizes, h5);
 	}
@@ -69,7 +65,7 @@ body {
 	columns: 2;
 
 	p {
-		font-size: map-get($font-sizes, p);
+		// font-size: map-get($font-sizes, p);
 	}
 }
 

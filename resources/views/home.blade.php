@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
-<div class="container">
-   Panel administracyjny.
-   @include('flash::message')
-</div>
+	<div class="container">
+		<h5>Panel administracyjny.</h5>
+		@include('flash::message')
+	</div>
 @endsection

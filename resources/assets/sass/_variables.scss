@@ -1,8 +1,11 @@
 
 // Body
 $body-bg: #f5f8fa;
-// $main-bg: #a0b5ca;
 $main-bg: #52968d;
+
+$dashbord-aside: #B0BEC5;
+$dashbord-main: #90A4AE;
+$paragraph: #212529;
 
 // Typography
 $font-family-sans-serif: "Raleway", sans-serif;
@@ -16,7 +19,7 @@ $font-sizes: (
 	h4: 2rem, // h4
 	h5: 1.75rem, //h5
 	h6: 1.5rem, //h6
-	p: 1.25rem, //p
+	p-normal: 1.25rem, //p
 	p-small: 1rem, //p
 );
 
