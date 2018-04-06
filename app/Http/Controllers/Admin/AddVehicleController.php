@@ -15,7 +15,6 @@ class AddVehicleController extends Controller
 
     public function store(Request $request)
     {
-
         $add_car = Cars::create($request->only([
             'brand',
             'model',
@@ -27,8 +26,7 @@ class AddVehicleController extends Controller
             'reserved',
         ]));
 
-        return redirect()
-            ->route('home')
-            ->withFlash(sprintf('Pomyślnie dodano pojazd: %s', $add_car->brand));
+        flash(sprintf('Pomyślnie dodano pojazd: %s', $add_car->brand));
+        return view('home');
     }
 }

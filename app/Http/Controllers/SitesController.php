@@ -27,8 +27,6 @@ class SitesController extends Controller
 
     public function savedCar(Request $request)
     {
-        // $myStr = str_random(60);
-        // dd($myStr);
         $saved_car = new SavedCar();
 
         $saved_car->name = $request->input('name');
@@ -45,26 +43,36 @@ class SitesController extends Controller
         return view('sites.saved-car', compact('saved_car'));
     }
 
-    public function carCreate()
+    // public function carCreate()
+    // {
+    //     return view('sites.add-car');
+    // }
+
+    // public function carStore(Request $request)
+    // {
+
+    //     $add_car = Cars::create($request->only([
+    //         'brand',
+    //         'model',
+    //         'year',
+    //         'mileage',
+    //         'price',
+    //         'colour',
+    //         'img_path',
+    //         'reserved',
+    //     ]));
+        
+    //     return redirect()->route('admin.home')->withFlash(sprintf('Pomyślnie dodano pojazd: %s', $add_car->brand));
+    // }
+
+    public function removeReservation()
     {
-        return view('sites.add-car');
+        return view('sites.remove-car');
     }
 
-    public function carStore(Request $request)
+    public function deleteCar()
     {
-
-        $add_car = Cars::create($request->only([
-            'brand',
-            'model',
-            'year',
-            'mileage',
-            'price',
-            'colour',
-            'img_path',
-            'reserved',
-        ]));
-        
-        return redirect()->route('admin.home')->withFlash(sprintf('Pomyślnie dodano pojazd: %s', $add_car->brand));
+        dd('usunięto!');
     }
 }
 
