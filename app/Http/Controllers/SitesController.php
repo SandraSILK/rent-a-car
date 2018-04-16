@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cars;
-use App\Test;
 use App\SavedCar;
 use App\AddItem;
     
@@ -43,36 +42,26 @@ class SitesController extends Controller
         return view('sites.saved-car', compact('saved_car'));
     }
 
-    // public function carCreate()
-    // {
-    //     return view('sites.add-car');
-    // }
-
-    // public function carStore(Request $request)
-    // {
-
-    //     $add_car = Cars::create($request->only([
-    //         'brand',
-    //         'model',
-    //         'year',
-    //         'mileage',
-    //         'price',
-    //         'colour',
-    //         'img_path',
-    //         'reserved',
-    //     ]));
-        
-    //     return redirect()->route('admin.home')->withFlash(sprintf('Pomyślnie dodano pojazd: %s', $add_car->brand));
-    // }
-
     public function removeReservation()
-    {
+    {  
         return view('sites.remove-car');
     }
 
-    public function deleteCar()
+    public function reservationRemove(Request $request)
     {
-        dd('usunięto!');
+        $nr_reservation = $request->input('nr_reservation');
+        $reservation = SavedCar::where('nr_reservation', $nr_reservation)->first();
+
+        if ($reservation) {
+            $reservation->delete();
+
+            flash('Pomyślnie usunięto rezerwację.');
+            return redirect('/');
+        }
+       
+        flash('Błędne dane do odwołania rezerwacji.');
+        return redirect('remove-reservation');
+           
     }
 }
 
