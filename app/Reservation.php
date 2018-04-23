@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SavedCar extends Model
+class Reservation extends Model
 {
     protected $fillable = [
         'name',
         'last_name',
-        'adress',
+        'address',
         'email',
         'telephone',
         'car',
@@ -19,6 +19,6 @@ class SavedCar extends Model
         'created_at',
     ];
     
-    protected $table = 'saved_car';
+    protected $table = 'reservations';
     public $timestamps = true;
 }

@@ -35943,18 +35943,17 @@ var dateFrom = document.getElementById('js-date-from');
 var dateTo = document.getElementById('js-date-to');
 var today = new Date().toISOString().split('T')[0];
 
-dateFrom.setAttribute('min', today);
-dateTo.disabled = true;
+dateTo.readOnly = true;
 
 dateFrom.onclick = function () {
-	setMinDate();
+	dateFrom.setAttribute('min', today);
+	dateTo.readOnly = false;
 };
 
-function setMinDate() {
-	dateTo.disabled = false;
-	var minDate = dateFrom.value;
-	dateTo.setAttribute('min', minDate);
-}
+dateTo.onclick = function () {
+	var newDate = dateFrom.value;
+	dateTo.setAttribute('min', newDate);
+};
 
 /***/ }),
 
