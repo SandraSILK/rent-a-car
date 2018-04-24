@@ -14,7 +14,7 @@ class Cars extends Model
         'mileage',
         'colour',
         'reserved',
-        'img_path',
+        'img',
     ];
    
     protected $table = 'cars';

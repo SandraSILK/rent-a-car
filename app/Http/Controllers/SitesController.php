@@ -44,8 +44,8 @@ class SitesController extends Controller
         $reservation->nr_reservation = str_random(20);
         $reservation->save();
 
-        return view('sites.reservations', [
-            'reservations' => $reservations,
+        return view('sites.reservation', [
+            'reservation' => $reservation,
         ]);
     }
 

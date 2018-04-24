@@ -22,7 +22,7 @@ class CarsTable extends Migration
             $table->integer('price');
             $table->string('colour');
             $table->integer('reserved');
-            $table->string('img_path');
+            $table->string('img');
         });
     }
 

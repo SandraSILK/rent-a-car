@@ -6,7 +6,7 @@
 			<div class="row">
 				<div class="col-12">
 					<h4>Dodaj auto</h4>
-					{{ Form::open(['route' => 'admin.car.store']) }}
+					{{ Form::open(['route' => 'admin.car.store', 'files' => true]) }}
 
 						{{ Form::label('brand', 'Marka')}}
 						{{ Form::text('brand', 'Wprowadź markę', [
@@ -45,8 +45,8 @@
 						]) }}
 
 
-						{{ Form::label('img_path', 'Grafika')}}
-						{{ Form::file('img_path', [
+						{{ Form::label('img', 'Grafika')}}
+						{{ Form::file('img', [
 							'class'       => 'form-control',
 							'required'    => 'required',
 						]) }}
