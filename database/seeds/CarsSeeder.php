@@ -19,7 +19,7 @@ class CarsSeeder extends Seeder
             'price'    => 290,
             'colour'   => 'czarny',
             'reserved' => 0,
-           	'img' => 'images/volvo.jpg'
+           	'img'      => 'images/volvo.jpg'
         ]);
 
         DB::table('cars')->insert([
@@ -30,7 +30,7 @@ class CarsSeeder extends Seeder
             'price'    => 350,
             'colour'   => 'biały',
             'reserved' => 0,
-            'img' => 'images/mercedes.jpg',
+            'img'      => 'images/mercedes.jpg',
         ]);
 
         DB::table('cars')->insert([
@@ -41,7 +41,7 @@ class CarsSeeder extends Seeder
             'price'    => 129,
             'colour'   => 'srebrny',
             'reserved' => 0,
-            'img' => 'images/passat.jpg',
+            'img'      => 'images/passat.jpg',
         ]);
 
         DB::table('cars')->insert([
@@ -52,7 +52,7 @@ class CarsSeeder extends Seeder
             'price'    => 259,
             'colour'   => 'czarny',
             'reserved' => 0,
-            'img' => 'images/audi.jpg',
+            'img'      => 'images/audi.jpg',
         ]);
 
         DB::table('cars')->insert([
@@ -63,7 +63,7 @@ class CarsSeeder extends Seeder
             'price'    => 259,
             'colour'   => 'biały',
             'reserved' => 0,
-            'img' => 'images/alfa-romeo.jpg',
+            'img'      => 'images/alfa-romeo.jpg',
         ]);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cars;
+use App\Car;
 use App\Reservation;
 use App\AddItem;
     
@@ -14,17 +14,21 @@ class SitesController extends Controller
     	return view('welcome');
     }
 
-    public function chooseCar() 
+    public function carsList(Car $car)
     {
-    	$cars = Cars::all();
-    	return view('sites.cars', compact('cars'));
+    	$cars = Car::all();
+    	return view('sites.cars', [
+            'cars' => $cars,
+        ]);
     }
 
-    public function booked(Cars $car) {
-    	return view('sites.booked', compact('car'));
+    public function booked(Car $car) {
+    	return view('sites.booked', [
+            'car' => $car,
+        ]);
     }
 
-    public function savedCar(Request $request)
+    public function store(Request $request)
     {
         $reservations = new Reservation();
 
@@ -51,10 +55,10 @@ class SitesController extends Controller
 
     public function removeReservation()
     {  
-        return view('sites.remove-car');
+        return view('sites.removeReservation');
     }
 
-    public function reservationRemove(Request $request)
+    public function destroy(Request $request)
     {
         $nr_reservation = $request->input('nr_reservation');
         $reservation = Reservation::where('nr_reservation', $nr_reservation)->first();
@@ -66,7 +70,7 @@ class SitesController extends Controller
             return redirect('/');
         }
        
-        flash('Błędne dane do odwołania rezerwacji.');
+        flash('Błędne dane.', 'danger');
         return redirect('remove-reservation');
            
     }

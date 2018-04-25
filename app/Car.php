@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cars extends Model
+class Car extends Model
 {
     protected $fillable = [
         'brand',
@@ -15,8 +15,8 @@ class Cars extends Model
         'colour',
         'reserved',
         'img',
+        'slug',
     ];
    
-    protected $table = 'cars';
 	public $timestamps = false;
 }

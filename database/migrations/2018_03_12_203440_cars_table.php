@@ -23,6 +23,7 @@ class CarsTable extends Migration
             $table->string('colour');
             $table->integer('reserved');
             $table->string('img');
+            $table->string('slug');
         });
     }
 

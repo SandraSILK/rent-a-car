@@ -29,7 +29,14 @@ body {
 	h6 {
 		font-size: map-get($font-sizes, h6);
 	}
+}
 
+.m-t-40 {
+	margin-top: 40px;
+}
+
+.m-b-40 {
+	margin-bottom: 40px;
 }
 
 .img-hero {
@@ -63,10 +70,6 @@ body {
 
 .card-columns {
 	columns: 2;
-
-	p {
-		// font-size: map-get($font-sizes, p);
-	}
 }
 
 .item-img {

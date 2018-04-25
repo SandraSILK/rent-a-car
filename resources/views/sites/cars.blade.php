@@ -4,7 +4,9 @@
 		<div class="card-columns">
 			@foreach($cars as $car) 
 				<div class="card">
-					<img src="{{ $car->img_path }}" alt="{{ $car->brand }}" class="item-img">
+					<a href="{{ route('booked', [$car, $car->slug]) }}">
+						<img src="{{ $car->img }}" alt="{{ $car->brand }}" class="item-img">
+					</a>
 					<div class="card-body">
 						<h4><strong>{{ $car->brand }}</strong></h4>
 						<p>Model: {{ $car->model }} </p>
@@ -12,7 +14,7 @@
 						<p>Przebieg: {{ $car->mileage }} </p>
 						<p>Cena: {{ $car->price }} </p>
 						<p>Kolor: {{ $car->colour }} </p>	
-						<a href="{{ route('saved_form', $car) }}" class="btn btn-success">Rezerwuj</a>
+						<a href="{{ route('booked', [$car, $car->slug]) }}" class="btn btn-success">Rezerwuj</a>
 					</div>
 			  	</div>
 		  	@endforeach
