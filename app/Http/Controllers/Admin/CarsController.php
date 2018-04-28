@@ -9,6 +9,15 @@ use App\Car;
 
 class CarsController extends Controller
 {
+    public function index()
+    {
+        $cars = Car::all();
+
+        return view('sites.auth.cars.index', [
+            'cars' => $cars,
+        ]);
+    }
+
     public function create()
     {
         return view('sites.auth.cars.create');
@@ -36,5 +45,11 @@ class CarsController extends Controller
 
         flash(sprintf('Pomyślnie dodano pojazd: %s', $request->brand));
         return view('home');
+    }
+
+    public function destroy(Car $car)
+    {
+        // $car->delete();
+        dd('test'); 
     }
 }

@@ -20,6 +20,7 @@
   --gray: #6c757d;
   --gray-dark: #343a40;
   --light: #fff;
+  --alert-box: rgba(137, 156, 165, 0.9);
   --primary: #007bff;
   --secondary: #6c757d;
   --success: #28a745;
@@ -10018,6 +10019,14 @@ a.text-dark:focus {
   padding-left: 0;
 }
 
+.dashboard ul li {
+  padding: 8px 0;
+}
+
+.dashboard ol {
+  list-style-type: none;
+}
+
 .dashboard .btn-dash {
   color: #212529;
   font-size: 1rem;
@@ -10030,6 +10039,27 @@ a.text-dark:focus {
 
 .dashboard .btn-dash.active {
   background: #90A4AE;
+}
+
+.dashboard .alert-box {
+  display: none;
+  background: rgba(137, 156, 165, 0.9);
+  position: fixed;
+  z-index: 1000;
+  margin: 0 auto;
+  width: 300px;
+  padding: 30px 40px;
+  left: 40%;
+  top: 25%;
+}
+
+.dashboard .alert-box .btn {
+  margin: 20px 10px 0 30px;
+}
+
+.dashboard .shadow {
+  -webkit-box-shadow: 0 4px 6px 0 #000;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
 html,

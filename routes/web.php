@@ -1,11 +1,14 @@
 <?php
 
 Route::name('main')->get('/', 'SitesController@index');
-Route::name('carsList')->get('choose-car', 'SitesController@carsList');
-Route::name('booked')->get('booked-car/{car}-{slug}', 'SitesController@booked');
-Route::name('store')->post('saved-car', 'SitesController@store');
-Route::name('removeReservation')->get('remove-reservation', 'SitesController@removeReservation');
-Route::name('destroy')->delete('remove', 'SitesController@destroy');
+Route::name('index')->get('choose-car', 'VehicleController@index');
+
+Route::group(['as' => 'reservation.', 'prefix' => 'reservation'], function () {
+    Route::name('create')->get('booked-car/{car}-{slug}', 'ReservationController@create');
+	Route::name('store')->post('saved-car', 'ReservationController@store');
+	Route::name('show')->get('remove-reservation', 'ReservationController@show');
+	Route::name('destroy')->delete('remove', 'ReservationController@destroy');
+    });
 
 Auth::routes();
-Route::name('home')->get('/home', 'HomeController@index');
+Route::name('admin.home')->get('/home', 'HomeController@index');

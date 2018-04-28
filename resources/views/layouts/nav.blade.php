@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('carsList') }}">Samochody</a>
+        <a class="nav-link" href="{{ route('index') }}">Samochody</a>
       </li>
       <li>
-        <a class="nav-link" href="{{ route('removeReservation') }}">Odwołaj rezerwację</a>
+        <a class="nav-link" href="{{ route('reservation.show') }}">Odwołaj rezerwację</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/login">Zaloguj się</a>

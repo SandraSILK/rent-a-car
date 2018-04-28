@@ -1,37 +1,68 @@
 .dashboard {
-	header {
-		background: $dashbord-aside;
-		padding: 10px 20px;
-	}
+    header {
+        background: $dashbord-aside;
+        padding: 10px 20px;
+    }
 
-	nav {
-		background: $dashbord-aside;
-		min-height: calc(100vh - 56px);
-		padding: 10px 20px;
-	}
+    nav {
+        background: $dashbord-aside;
+        min-height: calc(100vh - 56px);
+        padding: 10px 20px;
+    }
 
-	.dashboard-content {
-		background: $dashbord-main;
-		box-shadow: inset 10px 10px 10px -5px #777;
-		padding: 20px 20px;
-	}
+    .dashboard-content {
+        background: $dashbord-main;
+        box-shadow: inset 10px 10px 10px -5px #777;
+        padding: 20px 20px;
+    }
 
-	ul {
-		list-style-type: none;
-		padding-left: 0;
-	}
+    ul {
+        list-style-type: none;
+        padding-left: 0;
 
-	.btn-dash {
-		color: $paragraph;
-		font-size: map-get($font-sizes, p-small);
-		padding: 5px 10px;
+        li {
+            padding: 8px 0;
+        }
+    }
 
-		&:hover {
-			text-decoration: none;
-		}
+    ol {
+            list-style-type: none;
 
-		&.active {
-			background: $dashbord-main;
-		}
-	}
+    }
+
+    .btn-dash {
+        color: $paragraph;
+        font-size: map-get($font-sizes, p-small);
+        padding: 5px 10px;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &.active {
+            background: $dashbord-main;
+        }
+    }
+
+    .alert-box {
+        display: none;
+        background: map-get($colors, alert-box);
+        position: fixed;
+        z-index: 1000;
+        margin: 0 auto;
+        width: 300px;
+        padding: 30px 40px;
+        left: 40%;
+        top: 25%;
+
+        .btn {
+            margin: 20px 10px 0 30px;
+        }
+    }
+
+    .shadow {
+        -moz-box-shadow: 0 4px 6px 0 #000;
+        -webkit-box-shadow: 0 4px 6px 0 #000;
+        box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, .2);
+    }
 }

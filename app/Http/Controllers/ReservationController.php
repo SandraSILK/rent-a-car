@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-// use App\Car;
-// use App\Reservation;
-    
-class SitesController extends Controller
+use App\Reservation;
+use App\Car;
+
+class ReservationController extends Controller
 {
-    public function index() 
-    {
-        return view('welcome');
+    public function create(Car $car) {
+    	return view('sites.booked', [
+            'car' => $car,
+        ]);
     }
 
     public function store(Request $request)
@@ -38,7 +38,7 @@ class SitesController extends Controller
         ]);
     }
 
-    public function removeReservation()
+    public function show()
     {  
         return view('sites.removeReservation');
     }
@@ -56,9 +56,7 @@ class SitesController extends Controller
         }
        
         flash('Błędne dane.', 'danger');
-        return redirect('remove-reservation');
+        return redirect('reservation/remove-reservation');
            
     }
 }
-
-

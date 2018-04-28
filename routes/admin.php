@@ -1,5 +1,8 @@
 <?php
 
-Route::name('car.create')->get('car-add', 'CarsController@create');
-Route::name('car.store')->post('car-saved', 'CarsController@store');
-
+Route::group(['as' => 'car.'], function () {
+	Route::name('index')->get('cars', 'CarsController@index');
+	Route::name('create')->get('car-add', 'CarsController@create');
+	Route::name('store')->post('car-save', 'CarsController@store');
+	Route::name('destroy')->delete('car-remove/{$car}', 'CarsController@destroy');
+});
