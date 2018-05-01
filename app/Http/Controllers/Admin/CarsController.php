@@ -49,7 +49,13 @@ class CarsController extends Controller
 
     public function destroy(Car $car)
     {
-        // $car->delete();
-        dd('test'); 
+        $car->delete();
+        /*
+        * @todo 
+            remove imgs from store folder
+        *
+        */
+        flash(sprintf('Pomyślnie usunięto pojazd %s %s', $car->brand, $car->model));
     }
 }
+ 

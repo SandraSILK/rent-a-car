@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Car;
-// use App\Reservation;
     
 class SitesController extends Controller
 {
