@@ -11,7 +11,7 @@ class CarsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cars')->insert([
+        DB::table('vehicles')->insert([
             'brand'    => 'Volvo',
             'model'    => 'XC 90',
             'year'     => 2016,
@@ -19,10 +19,11 @@ class CarsSeeder extends Seeder
             'price'    => 290,
             'colour'   => 'czarny',
             'reserved' => 0,
-           	'img'      => 'images/volvo.jpg'
+           	'file'     => 'images/volvo.jpg',
+            'slug'     => 'volvo-xc-90',
         ]);
 
-        DB::table('cars')->insert([
+        DB::table('vehicles')->insert([
             'brand'    => 'Mercedes',
             'model'    => 'CLS',
             'year'     => 2014,
@@ -30,10 +31,11 @@ class CarsSeeder extends Seeder
             'price'    => 350,
             'colour'   => 'biały',
             'reserved' => 0,
-            'img'      => 'images/mercedes.jpg',
+            'file'     => 'images/mercedes.jpg',
+            'slug'     => 'mercedecs-cls',
         ]);
 
-        DB::table('cars')->insert([
+        DB::table('vehicles')->insert([
             'brand'    => 'Volkswagen',
             'model'    => 'Passat',
             'year'     => 2017,
@@ -41,10 +43,11 @@ class CarsSeeder extends Seeder
             'price'    => 129,
             'colour'   => 'srebrny',
             'reserved' => 0,
-            'img'      => 'images/passat.jpg',
+            'file'     => 'images/passat.jpg',
+            'slug'     => 'volkswagen-passat',
         ]);
 
-        DB::table('cars')->insert([
+        DB::table('vehicles')->insert([
             'brand'    => 'Audi',
             'model'    => 'Q7',
             'year'     => 2013,
@@ -52,10 +55,11 @@ class CarsSeeder extends Seeder
             'price'    => 259,
             'colour'   => 'czarny',
             'reserved' => 0,
-            'img'      => 'images/audi.jpg',
+            'file'     => 'images/audi.jpg',
+            'slug'     => 'audi-q7',
         ]);
 
-        DB::table('cars')->insert([
+        DB::table('vehicles')->insert([
             'brand'    => 'Alfa Romeo',
             'model'    => 'Giulietta',
             'year'     => 2017,
@@ -63,7 +67,8 @@ class CarsSeeder extends Seeder
             'price'    => 259,
             'colour'   => 'biały',
             'reserved' => 0,
-            'img'      => 'images/alfa-romeo.jpg',
+            'file'     => 'images/alfa-romeo.jpg',
+            'slug'     => 'alfa-romeo-giulietta',
         ]);
     }
 }

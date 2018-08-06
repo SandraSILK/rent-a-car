@@ -5,7 +5,7 @@
 			@foreach($cars as $car) 
 				<div class="card">
 					<a href="{{ route('reservation.create', [$car, $car->slug]) }}">
-						<img src="{{ $car->img }}" alt="{{ $car->brand }}" class="item-img">
+						<img src="{{ $car->file }}" alt="{{ $car->brand }}" class="item-img">
 					</a>
 					<div class="card-body">
 						<h4><strong>{{ $car->brand }}</strong></h4>

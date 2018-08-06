@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ReservationsTable extends Migration
+class CreateReservationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -21,8 +21,8 @@ class ReservationsTable extends Migration
             $table->string('email');
             $table->string('telephone');
             $table->string('car');
-            $table->string('date_from');
-            $table->string('date_to');
+            $table->date('date_from');
+            $table->date('date_to');
             $table->string('price');
             $table->text('nr_reservation');
             $table->timestamps();

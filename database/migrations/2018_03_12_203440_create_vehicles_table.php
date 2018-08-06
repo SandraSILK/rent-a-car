@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTestTable extends Migration
+class CreateVehiclesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTestTable extends Migration
      */
     public function up()
     {
-        Schema::create('test', function (Blueprint $table) {
+        Schema::create('vehicles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('brand');
             $table->string('model');
@@ -22,7 +22,8 @@ class CreateTestTable extends Migration
             $table->integer('price');
             $table->string('colour');
             $table->integer('reserved');
-            $table->string('img_path');
+            $table->string('file');
+            $table->string('slug');
         });
     }
 
@@ -33,6 +34,6 @@ class CreateTestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test');
+        Schema::dropIfExists('vehicles');
     }
 }

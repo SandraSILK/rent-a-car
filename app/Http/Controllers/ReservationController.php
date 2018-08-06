@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Reservation;
-use App\Car;
+use App\Vehicle;
 
 class ReservationController extends Controller
 {
-    public function create(Car $car) {
-    	return view('sites.booked', [
+    public function create(Vehicle $car) {
+    	return view('sites.reservations.booked', [
             'car' => $car,
         ]);
     }
@@ -33,14 +33,14 @@ class ReservationController extends Controller
         $reservation->nr_reservation = str_random(20);
         $reservation->save();
 
-        return view('sites.reservation', [
+        return view('sites.reservations.reservation', [
             'reservation' => $reservation,
         ]);
     }
 
     public function show()
     {  
-        return view('sites.removeReservation');
+        return view('sites.reservations.removeReservation');
     }
 
     public function destroy(Request $request)
@@ -56,7 +56,7 @@ class ReservationController extends Controller
         }
        
         flash('Błędne dane.', 'danger');
-        return redirect('reservation/remove-reservation');
+        return redirect('reservation/reservations.remove-reservation');
            
     }
 }
