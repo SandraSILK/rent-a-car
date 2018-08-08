@@ -1,46 +1,13 @@
 <?php
 
-// namespace App\Http\Controllers\Auth;
-
-// use App\User;
-// use App\Http\Controllers\Controller;
-// use App\Http\Requests\Auth\RegisterRequest;
-// use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Hash;
-
-// class RegisterController extends Controller
-// {
-//     protected $redirectTo = '/home';
-
-//     public function __construct()
-//     {
-//         $this->middleware('guest');
-//     }
-
-//     public function register(RegisterRequest $request)
-//     {
-//         $data = $request->only([
-//             'first_name',
-//             'last_name',
-//             'phone',
-//             'email',
-//             'password',
-//         ]);
-
-//         $data['api_token']         = str_random(32);
-//         $data['confirmation_code'] = Hash::make($data['email']);
-
-//         return User::create($data);
-//     }
-// }
-
-
 namespace App\Http\Controllers\Auth;
+
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 class RegisterController extends Controller
 {
     /*

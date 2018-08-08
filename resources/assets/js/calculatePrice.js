@@ -4,22 +4,6 @@ setInterval(calcDays, 300);
 function calcDays() {
 	const dateFromVal = document.getElementById('js-date-from').value;
 	const dateToVal = document.getElementById('js-date-to').value;
-
-	// const fromAr = dateFromVal.split("-");
-	// const fromVal = fromAr.push(fromAr.shift());
-
-	// const toAr = dateToVal.split("-");
-	// const toVal = toAr.push(toAr.shift());
-
-	// const fromStr = fromAr.toString();
-	// const toStr = toAr.toString();
-
-	// var dateFrom = fromStr.replace(/,/g, '/');
-	// var dateTo = toStr.replace(/,/g, '/');
-
-	// var dateFrom = dateFromVal.replace(/-/g, '/');
-	// var dateTo = dateToVal.replace(/-/g, '/');
-
 	const from = new Date(dateFromVal);
 	const to = new Date(dateToVal);
 
