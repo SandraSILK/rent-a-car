@@ -1,19 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
+
+use App\Http\Requests\Reservation\CreateReservationRequest;
+use App\Notifications\Reservation\SendReservation;
 use App\Reservation;
 use App\Vehicle;
+use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
     public function create(Vehicle $car) {
-    	return view('sites.reservations.booked', [
+
+    	return view('sites.reservations.create', [
             'car' => $car,
         ]);
     }
 
-    public function store(Request $request)
+    public function store(CreateReservationRequest $request)
     {
         $reservations = new Reservation();
 
@@ -32,6 +37,8 @@ class ReservationController extends Controller
         $reservation = Reservation::make($data);
         $reservation->nr_reservation = str_random(20);
         $reservation->save();
+
+        $reservation->notify(new SendReservation());
 
         return view('sites.reservations.reservation', [
             'reservation' => $reservation,

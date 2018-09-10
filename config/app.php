@@ -1,9 +1,6 @@
 <?php
 
 return [
-    'Barryvdh\Debugbar\ServiceProvider',
-
-    'Debugbar' => 'Barryvdh\Debugbar\Facade',
     /*
     |--------------------------------------------------------------------------
     | Application Name

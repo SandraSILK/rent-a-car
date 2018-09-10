@@ -14,9 +14,7 @@
 <body>
     @include('layouts.nav')
     @yield('content')
-
-        <script src="{{ asset('js/app.js') }}"></script>
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @stack('scripts')
 </body>
 </html>

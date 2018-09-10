@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Reservation extends Model
 {
+    use Notifiable;
+
     protected $fillable = [
         'name',
         'last_name',
@@ -19,6 +22,7 @@ class Reservation extends Model
         'created_at',
     ];
     
-    protected $table = 'reservations';
+    protected $table   = 'reservations';
+
     public $timestamps = true;
 }

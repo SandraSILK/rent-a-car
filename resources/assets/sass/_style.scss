@@ -1,99 +1,106 @@
 html,
 body {
-	height: 100%;
+    height: 100%;
 }
 
 body {
-	background-color: $main-bg;
+    background-color: $main-bg;
 
-	h1 {
-		font-size: map-get($font-sizes, h1);
-	}
+    h1 {
+        font-size: map-get($font-sizes, h1);
+    }
 
-	h2 {
-		font-size: map-get($font-sizes, h2);
-	}
+    h2 {
+        font-size: map-get($font-sizes, h2);
+    }
 
-	h3 {
-		font-size: map-get($font-sizes, h3);
-	}
+    h3 {
+        font-size: map-get($font-sizes, h3);
+    }
 
-	h4 {
-		font-size: map-get($font-sizes, h4);
-	}
+    h4 {
+        font-size: map-get($font-sizes, h4);
+    }
 
-	h5 {
-		font-size: map-get($font-sizes, h5);
-	}
+    h5 {
+        font-size: map-get($font-sizes, h5);
+    }
 
-	h6 {
-		font-size: map-get($font-sizes, h6);
-	}
+    h6 {
+        font-size: map-get($font-sizes, h6);
+    }
 }
 
 .m-t-40 {
-	margin-top: 40px;
+    margin-top: 40px;
 }
 
 .m-b-40 {
-	margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .img-hero {
-	min-height: calc(100vh - 55px);
-	background: url('../images/img-hero.jpg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	color: map-get($colors, light);
-	padding-top: 25vh;
+    min-height: calc(100vh - 55px);
+    background: url('../images/img-hero.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: map-get($colors, light);
+    padding-top: 25vh;
 
-	a {
-		color: white;
+    a {
+        color: white;
 
-		&:hover {
-			text-decoration: none;
-		}
-	}
-	h1,
-	h3 {
-		background-color: rgba(0,105, 92, .5);
-		padding: 10px 0;
-		margin-bottom: 0;
-	}
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    h1,
+    h3 {
+        background-color: rgba(0,105, 92, .5);
+        padding: 10px 0;
+        margin-bottom: 0;
+    }
 }
 
 
 .car-show {
-	padding: 70px 0;
+    padding: 70px 0;
 }
 
 .card-columns {
-	columns: 2;
+    columns: 2;
 }
 
 .item-img {
-	width: 100%;
-	height: 300px;
-	object-fit: cover;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
 }
 
 .hero-header {
-	img {
-		width: 100%;
-		height: 450px;
-		object-fit: cover;
-	}
+    img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+    }
 
-	h1 {
-		background-color: rgba(0,105, 92, .5);
-		margin-bottom: 0;
-		font-size: 3rem;
-		bottom: 0;
-		margin-top: -80px;
-		padding-left: 100px;
-		padding-top: 10px;
-		width: 100%;
-		color: map-get($colors, light);
-	}
+    h1 {
+        background-color: rgba(0,105, 92, .5);
+        margin-bottom: 0;
+        font-size: 3rem;
+        bottom: 0;
+        margin-top: -80px;
+        padding-left: 100px;
+        padding-top: 10px;
+        width: 100%;
+        color: map-get($colors, light);
+    }
+}
+
+.alert-danger {
+    ul {
+        margin: 0;
+        list-style-type: none;
+    }
 }

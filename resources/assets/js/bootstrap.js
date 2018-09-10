@@ -1,6 +1,4 @@
-
 window._ = require('lodash');
-window.Popper = require('popper.js').default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -24,6 +22,12 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+let api_token = document.head.querySelector('meta[name="api-token"]');
+if (api_token) {
+    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+} else {
+    console.error('API token not found');
+}
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -50,7 +54,5 @@ if (token) {
 
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
+//     key: 'your-pusher-key'
 // });

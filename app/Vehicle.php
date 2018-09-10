@@ -17,4 +17,9 @@ class Vehicle extends Model
         'file',
         'slug',
     ];
+
+    public function getFullNameAttribute()
+    {
+        return sprintf('%s %s', $this->brand, $this->model);
+    }
 }
