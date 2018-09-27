@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\HtmlString;
 
 class SendReservation extends Notification
 {
@@ -41,9 +42,11 @@ class SendReservation extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject(sprintf('Witaj %s %s', $notifiable->name, $notifiable->last_name))
+                    ->line(sprintf('Dziękujemy za złożenie rezerwacji na pojazd %s.', $notifiable->car))
+                    ->line(sprintf('Auto będzie na Ciebie czekać w naszym punkcie w dniu %s. Prosimy o jego terminowy zwrot dnia %s. Całkowity koszt wynajmu pojazdu wynosi %d zł.', $notifiable->date_from, $notifiable->date_to, $notifiable->price))
+                    ->line(sprintf('Numer rezerwacji niezbędny do podjęcia auta to %s.', $notifiable->nr_reservation))
+                    ->salutation(new HtmlString('Pozdrawimy, <br> Zespół Rent A Car!'));
     }
 
     /**

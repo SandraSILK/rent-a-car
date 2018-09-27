@@ -20,7 +20,6 @@ class ReservationController extends Controller
 
     public function store(CreateReservationRequest $request)
     {
-        $reservations = new Reservation();
 
         $data = $request->only([
             'name',
