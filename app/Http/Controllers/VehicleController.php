@@ -10,7 +10,7 @@ class VehicleController extends Controller
     public function index(Vehicle $car)
     {
     	$cars = Vehicle::all();
-    	return view('sites.cars', [
+    	return view('sites.vehicles.index', [
             'cars' => $cars,
         ]);
     }
