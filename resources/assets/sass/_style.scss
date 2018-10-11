@@ -1,10 +1,12 @@
-html,
-body {
-    height: 100%;
-}
-
 body {
     background-color: $main-bg;
+    background: rgba(210,255,82,1);
+    background: -moz-linear-gradient(bottom, $main-bg 0%, darken($main-bg, 20%) 100%);
+    background: -webkit-gradient(bottom top color-stop(0%, $main-bg), color-stop(100%, darken($main-bg, 20%)));
+    background: -webkit-linear-gradient(bottom, $main-bg 0%, darken($main-bg, 20%) 100%);
+    background: -o-linear-gradient(bottom, $main-bg 0%, darken($main-bg, 20%) 100%);
+    background: -ms-linear-gradient(bottom, $main-bg 0%, darken($main-bg, 20%) 100%);
+    background: linear-gradient(to bottom, $main-bg 0%, darken($main-bg, 20%) 100%);
 
     h1 {
         font-size: map-get($font-sizes, h1);
@@ -103,4 +105,9 @@ body {
         margin: 0;
         list-style-type: none;
     }
+}
+
+.login {
+    width: 300px;
+    padding: 10px;
 }

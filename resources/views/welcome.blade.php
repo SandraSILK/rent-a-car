@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <main>
         <div class="img-hero text-center">

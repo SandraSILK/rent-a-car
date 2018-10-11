@@ -13,7 +13,6 @@ class ReservationController extends Controller
 {
     public function create(Vehicle $car)
     {
-
         return view('sites.reservations.create', [
             'car' => $car,
         ]);
@@ -21,7 +20,6 @@ class ReservationController extends Controller
 
     public function store(CreateReservationRequest $request)
     {
-
         $data = $request->only([
             'name',
             'last_name',
@@ -64,6 +62,7 @@ class ReservationController extends Controller
         }
 
         flash('Błędne dane.', 'danger');
+
         return redirect('reservation/reservations.remove-reservation');
     }
 }
