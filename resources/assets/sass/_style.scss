@@ -41,13 +41,20 @@ body {
     margin-bottom: 40px;
 }
 
+.p-top-25vh {
+    padding-top: 25vh;
+}
+
+.p-top-10vh {
+    padding-top: 10vh;
+}
+
 .img-hero {
     min-height: calc(100vh - 55px);
     background: url('../images/img-hero.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 25vh;
 }
 
 .hero-text {
