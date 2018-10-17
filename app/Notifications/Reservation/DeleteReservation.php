@@ -43,7 +43,7 @@ class DeleteReservation extends Notification
     {
         return (new MailMessage)
                     ->subject('Potwierdzenie odwołania rezerwacji.')
-                    ->line(sprintf('Witaj %s %s', $notifiable->name, $notifiable->last_name))
+                    ->line(sprintf('Witaj %s %s', $notifiable->first_name, $notifiable->last_name))
                     ->line(sprintf('Przesyłamy potwierdzie odwołania rezerwacji na auto: %s, w dniach %s - %s', $notifiable->car, $notifiable->date_from, $notifiable->date_to))
                     ->salutation(new HtmlString('Pozdrawimy, <br> Zespół Rent A Car!'));
     }

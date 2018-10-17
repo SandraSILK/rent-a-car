@@ -52,10 +52,9 @@ class SitesController extends Controller
             flash('Pomyślnie usunięto rezerwację.');
             return redirect('/');
         }
-       
+
         flash('Błędne dane.', 'danger');
         return redirect('remove-reservation');
-           
     }
 }
 

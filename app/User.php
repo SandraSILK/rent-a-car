@@ -23,6 +23,8 @@ class User extends Authenticatable
         'role',
         'api_token',
         'remember_token',
+        'confirmation',
+        'send'
     ];
 
     /**

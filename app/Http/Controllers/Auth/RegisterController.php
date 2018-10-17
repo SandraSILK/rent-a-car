@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Notifications\Registration\ConfirmRegistration;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -60,14 +62,36 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'first_name'        => $data['first_name'],
-            'last_name'         => $data['last_name'],
-            'phone'             => $data['phone'],
-            'email'             => $data['email'],
-            'api_token'         => Hash::make($data['email']),
-            'password'          => Hash::make($data['password']),
-            'role'              => 2,
+        $user = User::create([
+            'first_name' => $data['first_name'],
+            'last_name'  => $data['last_name'],
+            'phone'      => $data['phone'],
+            'email'      => $data['email'],
+            'api_token'  => Hash::make($data['email']),
+            'password'   => Hash::make($data['password']),
+            'role'       => 2,
+            'send'       => Carbon::now(),
         ]);
+
+        $user->notify(new ConfirmRegistration());
+        dd('toDO przekierowanie + metoda confirm powinna pójść do API');
+    }
+
+    public function confirm($apiToken)
+    {
+        $user = User::where('api_token', $apiToken)->first();
+
+        if ($user->update(['confirmation' => true])) {
+            flash('Konto zostało aktywowane. Życzymy szerokiej drogi.', 'success');
+            return redirect(route('register.show'));
+        }
+
+        flash('Coś poszło nie tak, prosimy o kontakt z Działem Pomocy Rent A Car.', 'danger');
+        return redirect(route('register.show'));
+    }
+
+    public function show()
+    {
+        return view('sites/auth/register/show');
     }
 }

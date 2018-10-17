@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Notifications\Reservation;
+namespace App\Notifications\Registration;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\HtmlString;
 
-class SendReservation extends Notification
+class ConfirmRegistration extends Notification
 {
     use Queueable;
 
@@ -42,11 +42,11 @@ class SendReservation extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Potwierdzenie rezerwacji')
                     ->line(sprintf('Witaj %s %s', $notifiable->first_name, $notifiable->last_name))
-                    ->line(sprintf('Dziękujemy za złożenie rezerwacji na pojazd %s.', $notifiable->car))
-                    ->line(sprintf('Auto będzie na Ciebie czekać w naszym punkcie w dniu %s. Prosimy o jego terminowy zwrot dnia %s. Całkowity koszt wynajmu pojazdu wynosi %d zł.', $notifiable->date_from, $notifiable->date_to, $notifiable->price))
-                    ->line(sprintf('Numer rezerwacji niezbędny do podjęcia auta to %s.', $notifiable->nr_reservation))
+                    ->line(new HtmlString('Chcemy przywitać Ciebie w naszym serwisie <strong>Rent A Car</strong>.'))
+                    ->line('Aby w pełni móc cieszyć się pełnym dostępem do konta, musisz potwierdzić jego założenie.')
+                    ->action('Aktywuj konto!', route('register.confirm', $notifiable->api_token))
+                    ->line('Jeżeli nie byłeś adresatem niniejszej wiadomości, zignoruj ją.')
                     ->salutation(new HtmlString('Pozdrawimy, <br> Zespół Rent A Car!'));
     }
 
