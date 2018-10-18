@@ -72,21 +72,29 @@ class RegisterController extends Controller
             'role'       => 2,
             'send'       => Carbon::now(),
         ]);
+        //todo!!!
+/*        if ($user) {
+            $user->notify(new ConfirmRegistration());
 
-        $user->notify(new ConfirmRegistration());
-        dd('toDO przekierowanie + metoda confirm powinna pójść do API');
+            flash('Konto zostało aktywowane. Życzymy szerokiej drogi.', 'success');
+            return redirect(route('register.show'));
+        };
+
+        flash('Ups! Coś poszło nie tak, prosimy o kontakt z Działem Pomocy Rent A Car.', 'danger');
+        return redirect(route('register.show'));*/
+
     }
 
     public function confirm($apiToken)
     {
         $user = User::where('api_token', $apiToken)->first();
 
-        if ($user->update(['confirmation' => true])) {
+        if ($user) {
             flash('Konto zostało aktywowane. Życzymy szerokiej drogi.', 'success');
             return redirect(route('register.show'));
         }
 
-        flash('Coś poszło nie tak, prosimy o kontakt z Działem Pomocy Rent A Car.', 'danger');
+        flash('Ups! Coś poszło nie tak, prosimy o kontakt z Działem Pomocy Rent A Car.', 'danger');
         return redirect(route('register.show'));
     }
 
