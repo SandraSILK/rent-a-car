@@ -130,3 +130,9 @@ body {
         color: $white;
     }
 }
+
+@media (max-width: 768px) {
+    .login button[type="submit"] {
+        margin-bottom: 20px;
+    }
+}
