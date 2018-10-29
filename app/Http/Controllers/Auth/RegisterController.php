@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use App\Notifications\Registration\ConfirmRegistration;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -72,17 +73,16 @@ class RegisterController extends Controller
             'role'       => 2,
             'send'       => Carbon::now(),
         ]);
-        //todo!!!
-/*        if ($user) {
-            $user->notify(new ConfirmRegistration());
+        return $user;
+        // if ($user) {
+        //     $user->notify(new ConfirmRegistration());
+        //     flash('Na podany email został wysłany link aktywacyjny.', 'success');
 
-            flash('Konto zostało aktywowane. Życzymy szerokiej drogi.', 'success');
-            return redirect(route('register.show'));
-        };
+        //     return view('sites/auth/register/show');
+        // };
 
-        flash('Ups! Coś poszło nie tak, prosimy o kontakt z Działem Pomocy Rent A Car.', 'danger');
-        return redirect(route('register.show'));*/
-
+        // flash('Ups! Coś poszło nie tak, prosimy o kontakt z Działem Pomocy Rent A Car.', 'danger');
+        // return view('sites/auth/register/show');
     }
 
     public function confirm($apiToken)
@@ -101,5 +101,15 @@ class RegisterController extends Controller
     public function show()
     {
         return view('sites/auth/register/show');
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        // event(new Registered($user = $this->create($request->all())));
+
+        return redirect()->route('show')
+            ->with(['success' => 'Congratulations! your account is registered, you will shortly receive an email to activate your account.']);
     }
 }
