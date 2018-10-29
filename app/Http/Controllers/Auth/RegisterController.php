@@ -103,13 +103,13 @@ class RegisterController extends Controller
         return view('sites/auth/register/show');
     }
 
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
+    // public function register(Request $request)
+    // {
+    //     $this->validator($request->all())->validate();
 
-        // event(new Registered($user = $this->create($request->all())));
+    //     // event(new Registered($user = $this->create($request->all())));
 
-        return redirect()->route('show')
-            ->with(['success' => 'Congratulations! your account is registered, you will shortly receive an email to activate your account.']);
-    }
+    //     return redirect()->route('show')
+    //         ->with(['success' => 'Congratulations! your account is registered, you will shortly receive an email to activate your account.']);
+    // }
 }
