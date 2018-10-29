@@ -11,7 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/assets/sass/app.scss', 'public/css')
-   .js('resources/assets/js/app.js', 'public/js')
-   .js('resources/assets/js/calculatePrice.js', 'public/js')
-   .js('resources/assets/js/setDate.js', 'public/js');
+mix.sass('resources/sass/app.scss', 'public/css')
+   .js('resources/js/app.js', 'public/js')
+   .js('resources/js/calculatePrice.js', 'public/js')
+   .js('resources/js/setDate.js', 'public/js');
