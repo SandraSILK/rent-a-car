@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-    
+
 class SitesController extends Controller
 {
     public function index() 
@@ -27,7 +27,7 @@ class SitesController extends Controller
             'price',
         ]);
 
-        $reservation = Reservation::make($data);
+        $reservation                 = Reservation::make($data);
         $reservation->nr_reservation = str_random(20);
         $reservation->save();
 
@@ -44,7 +44,7 @@ class SitesController extends Controller
     public function destroy(Request $request)
     {
         $nr_reservation = $request->input('nr_reservation');
-        $reservation = Reservation::where('nr_reservation', $nr_reservation)->first();
+        $reservation    = Reservation::where('nr_reservation', $nr_reservation)->first();
 
         if ($reservation) {
             $reservation->delete();

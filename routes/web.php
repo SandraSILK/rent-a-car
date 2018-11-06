@@ -9,13 +9,8 @@ Route::group(['as' => 'reservation.', 'prefix' => 'reservation'], function () {
 	Route::name('show')->get('remove-reservation', 'ReservationController@show');
 	Route::name('destroy')->delete('remove', 'ReservationController@destroy');
     });
-
 Route::name('register.show')->get('/confirm-show', 'Auth\RegisterController@show');
 Route::name('register.confirm')->get('/confirm-register-{apiToken}', 'Auth\RegisterController@confirm');
 
-Auth::routes(['verify' => true]);
-Auth::routes();
 Route::name('admin.home')->get('/home', 'HomeController@index');
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

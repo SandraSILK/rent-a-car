@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Vehicle;
 
-class CarsController extends Controller
+class VehicleController extends Controller
 {
+    protected $path = 'sites.auth.car.';
+
     public function index()
     {
         $cars = Vehicle::all();

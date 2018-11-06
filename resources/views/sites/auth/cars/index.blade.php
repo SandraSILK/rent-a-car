@@ -35,7 +35,7 @@
                                         <button class="js-btn-no btn btn-danger float-left">NIE</button>
                                     </div>
 
-                                    <a href="#" class="btn btn-success">edytuj</a>
+                                    <a href="#" class="btn btn-warning">edytuj</a>
                                     <button class="js-remove btn btn-danger">usuń</button>
                                 </td>
                             </tr>
