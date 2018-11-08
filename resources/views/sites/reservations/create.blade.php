@@ -3,7 +3,7 @@
     <header>
         <div class="container-fluid">
             <div class="row hero-header">
-                <img src="http://localhost:8000/{{ $car->file}}" alt="">
+                <img src="{{ asset($car->file) }}" alt="">
                 <h1 class="hero-title"><strong>{{ $car->brand }}&nbsp;{{ $car->model }}</strong></h1>
             </div>
         </div>

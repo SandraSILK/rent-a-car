@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Vehicle;
+use App\Test;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VehicleController extends Controller
 {
-    protected $path = 'sites.auth.car.';
+    protected $path = 'sites.auth.vehicles.';
 
     public function index()
     {
-        $cars = Vehicle::all();
+        $vehicles = Vehicle::all();
 
-        return view('sites.auth.cars.index', [
-            'cars' => $cars,
+        return view($this->path.'index', [
+            'vehicles' => $vehicles,
         ]);
     }
 
     public function create()
     {
-        return view('sites.auth.cars.create');
+        return view($this->path.'create');
     }
 
     public function store(Request $request)
@@ -39,17 +40,31 @@ class VehicleController extends Controller
 
         $name = 'car_'.rand().'.jpg';
 
-        Storage::putFileAs('public/cars', $request->file('file'), $name);
+        Storage::putFileAs('public/vehicles', $request->file('file'), $name);
 
-        $data['file'] = 'storage/cars/'.$name;
-        $data['slug'] = str_slug($request->brand).'-'.str_slug($request->model);
-        Vehilce::create($data);
+        $data['file'] = 'storage/vehicles/'.$name;
+        $data['slug'] = sprintf('%s-%s', ($request->brand), str_slug($request->model));
 
-        flash(sprintf('Pomyślnie dodano pojazd: %s', $request->brand));
-        return view('home');
+        if (Vehicle::create($data)) {
+            flash(sprintf('Pomyślnie dodano pojazd: %s', $request->brand), 'success');
+            return redirect()
+                ->route('admin.car.index');
+        }
+
+        flash('Ups coś poszło nie tak.', 'danger');
+        return redirect()
+            ->route('admin.car.index');
     }
 
-    public function destroy(Vehilce $car)
+    public function edit(Vehicle $vehicle)
+    {
+        $vehicle = Vehilce::find($id);
+        return view($this->path.'edit', [
+            'vehilce' => $vehicle,
+        ]);
+    }
+
+    public function destroy (Vehilce $car)
     {
         $car->delete();
         /*
@@ -58,6 +73,7 @@ class VehicleController extends Controller
         *
         */
         flash(sprintf('Pomyślnie usunięto pojazd %s %s', $car->brand, $car->model));
+        return view($this->path.'index');
     }
 }
  
