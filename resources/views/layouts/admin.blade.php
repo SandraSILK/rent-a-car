@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    {{-- <script src="{{ mix('js/admin.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/admin.js') }}"></script> --}}
     @stack('scripts')
 </body>
 

@@ -4,12 +4,14 @@
         <div class="row">
             <div class="col-12 m-t-40">
                 <h4>Edytuj pojazd {{ $vehicle->fullName }}</h4>
+                @include('errors.request-errors')
                 {{ Form::model($vehicle, [
-                    'route' => 'admin.car.store',
-                    'files' => true
+                    'route'  => ['admin.car.update', $vehicle],
+                    'files'  => true,
+                    'method' => 'PUT'
                 ]) }}
                     @include('sites.auth.vehicles.includes.forms', [
-                        'button' => 'Zapisz zmiany' 
+                        'button' => 'Zapisz zmiany'
                     ])
                 {{ Form::close() }}
             </div>

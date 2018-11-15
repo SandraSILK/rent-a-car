@@ -12,8 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     	$seeders = [
-    		'CarsSeeder',
-    		'UserSeeder'
+    		// 'CarsSeeder',
+    		// 'UserSeeder'
     	];
 
     	foreach ($seeders as $seeder) {

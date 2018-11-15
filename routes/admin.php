@@ -6,6 +6,7 @@
         Route::name('create')->get('add', 'VehicleController@create');
         Route::name('store')->post('save', 'VehicleController@store');
         Route::name('edit')->get('edit-{vehicle}', 'VehicleController@edit');
-        Route::name('destroy')->delete('remove/{car}', 'VehicleController@destroy');
+        Route::name('update')->put('update-{vehicle}', 'VehicleController@update');
+        Route::name('destroy')->delete('remove-{vehicle}', 'VehicleController@destroy');
     });
 // })->middleware('verified');

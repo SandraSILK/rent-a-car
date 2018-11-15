@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Vehicles\StoreVehicleRequest;
+use App\Http\Requests\Vehicles\UpdateVehicleRequest;
 use App\Vehicle;
-use App\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\File;
 
 class VehicleController extends Controller
 {
@@ -26,7 +28,7 @@ class VehicleController extends Controller
         return view($this->path.'create');
     }
 
-    public function store(Request $request)
+    public function store(StoreVehicleRequest $request)
     {
         $data = $request->only([
             'brand',
@@ -38,11 +40,7 @@ class VehicleController extends Controller
             'reserved',
         ]);
 
-        $name = 'car_'.rand().'.jpg';
-
-        Storage::putFileAs('public/vehicles', $request->file('file'), $name);
-
-        $data['file'] = 'storage/vehicles/'.$name;
+        $data['file'] = $this->saveFile($request->file('file'));
         $data['slug'] = sprintf('%s-%s', ($request->brand), str_slug($request->model));
 
         if (Vehicle::create($data)) {
@@ -58,22 +56,54 @@ class VehicleController extends Controller
 
     public function edit(Vehicle $vehicle)
     {
-        $vehicle = Vehilce::find($id);
         return view($this->path.'edit', [
-            'vehilce' => $vehicle,
+            'vehicle' => $vehicle,
         ]);
     }
 
-    public function destroy (Vehilce $car)
+    public function update(Request $request, Vehicle $vehicle)
     {
-        $car->delete();
+        $data = $request->only([
+            'brand',
+            'model',
+            'year',
+            'mileage',
+            'price',
+            'colour',
+            'reserved',
+        ]);
+
+        if ($request->hasFile('file')) {
+            // $path = str_replace('/', '\\', $vehicle->file);
+            // unlink(storage_path($vehicle->file));
+            // File::delete($vehicle->file);
+            dd(File::delete($vehicle->file));
+            $data['file'] = $this->saveFile($request->file('file'));
+        }
+
+        $vehicle->update($data);
+        dd($vehicle->model);
+    }
+
+    public function destroy(Vehicle $vehicle)
+    {
+        // dd($vehicle);
+        $vehicle->delete();
         /*
         * @todo 
             remove imgs from store folder
         *
         */
-        flash(sprintf('Pomyślnie usunięto pojazd %s %s', $car->brand, $car->model));
+        flash(sprintf('Pomyślnie usunięto pojazd %s %s', $vehicle->fullName));
         return view($this->path.'index');
+    }
+
+    public function saveFile($file)
+    {
+        $name = sprintf('car_%s.jpg', rand());
+        Storage::putFileAs('public/vehicles', $file, $name);
+
+        return sprintf('storage/vehicles/%s', $name);
     }
 }
  
