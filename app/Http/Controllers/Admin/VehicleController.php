@@ -8,7 +8,6 @@ use App\Http\Requests\Vehicles\UpdateVehicleRequest;
 use App\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-// use Illuminate\Support\Facades\File;
 
 class VehicleController extends Controller
 {
@@ -43,8 +42,8 @@ class VehicleController extends Controller
         $data['file'] = $this->saveFile($request->file('file'));
         $data['slug'] = sprintf('%s-%s', ($request->brand), str_slug($request->model));
 
-        if (Vehicle::create($data)) {
-            flash(sprintf('Pomyślnie dodano pojazd: %s', $request->brand), 'success');
+        if ($vehicle = Vehicle::create($data)) {
+            flash(sprintf('Pomyślnie dodano pojazd: %s', $vehicle->fullName), 'success');
             return redirect()
                 ->route('admin.car.index');
         }
@@ -74,28 +73,30 @@ class VehicleController extends Controller
         ]);
 
         if ($request->hasFile('file')) {
-            // $path = str_replace('/', '\\', $vehicle->file);
-            // unlink(storage_path($vehicle->file));
-            // File::delete($vehicle->file);
-            dd(File::delete($vehicle->file));
+            unlink($vehicle->file);
             $data['file'] = $this->saveFile($request->file('file'));
         }
 
-        $vehicle->update($data);
-        dd($vehicle->model);
+        if ($vehicle->update($data)) {
+            flash(sprintf('Pomyślnie zaktualizowano %s', $vehicle->fullName));
+            return redirect()
+                ->route('admin.car.index');
+        }
     }
 
     public function destroy(Vehicle $vehicle)
     {
-        // dd($vehicle);
-        $vehicle->delete();
-        /*
-        * @todo 
-            remove imgs from store folder
-        *
-        */
-        flash(sprintf('Pomyślnie usunięto pojazd %s %s', $vehicle->fullName));
-        return view($this->path.'index');
+        if ($vehicle->delete()) {
+            unlink($vehicle->file);
+
+            flash('Pomyślnie usunięto %s', $vehicle->fullName);
+            return redirect()
+                ->route('admin.car.index');
+        }
+
+        flash('Ups coś poszło nie tak.', 'danger');
+        return redirect()
+            ->route('admin.car.index');
     }
 
     public function saveFile($file)
