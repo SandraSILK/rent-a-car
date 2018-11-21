@@ -4,7 +4,7 @@ namespace App\Http\Requests\Reservation;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateReservationRequest extends FormRequest
+class StoreReservationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,6 +33,7 @@ class CreateReservationRequest extends FormRequest
             'date_to'   => 'required|date',
             'date_from' => 'required|date',
             'price'     => 'required',
+            'rules'     => 'required',
         ];
     }
 
@@ -46,9 +47,10 @@ class CreateReservationRequest extends FormRequest
             'email.email'        => 'Email musi mieć odpowiedni format.',
             'telephone.required' => 'Telefon jest polem wymaganym.',
             'car.required'       => 'Samochód jest polem wymaganym.',
-            'date_to.required'   => 'Data od jest polem wymaganym.',
-            'date_from.required' => 'Data do jest polem wymaganym.',
+            'date_to.required'   => 'Data wypożyczenia jest polem wymaganym.',
+            'date_from.required' => 'Data oddania jest polem wymaganym.',
             'price.required'     => 'Cena jest polem wymaganym.',
+            'rules.required'     => 'Akceptacja regulaminu jest wymagana.',
         ];
     }
 }

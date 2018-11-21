@@ -11,14 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	$seeders = [
-    		// 'CarsSeeder',
-    		// 'UserSeeder'
-    	];
+        $seeders = [
+            // 'VehiclesSeeder',
+        ];
 
-    	foreach ($seeders as $seeder) {
-    		$this->call($seeder);
-    	};
+        foreach ($seeders as $seeder) {
+            $this->call($seeder);
+        };
         
     }
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CarsSeeder extends Seeder
+class VehiclesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +18,6 @@ class CarsSeeder extends Seeder
             'mileage'  => '84 885',
             'price'    => 290,
             'colour'   => 'czarny',
-            'reserved' => 0,
            	'file'     => 'images/volvo.jpg',
             'slug'     => 'volvo-xc-90',
         ]);
@@ -30,7 +29,6 @@ class CarsSeeder extends Seeder
             'mileage'  => '125 475',
             'price'    => 350,
             'colour'   => 'biały',
-            'reserved' => 0,
             'file'     => 'images/mercedes.jpg',
             'slug'     => 'mercedecs-cls',
         ]);
@@ -42,7 +40,6 @@ class CarsSeeder extends Seeder
             'mileage'  => '12 052',
             'price'    => 129,
             'colour'   => 'srebrny',
-            'reserved' => 0,
             'file'     => 'images/passat.jpg',
             'slug'     => 'volkswagen-passat',
         ]);
@@ -54,7 +51,6 @@ class CarsSeeder extends Seeder
             'mileage'  => '212 052',
             'price'    => 259,
             'colour'   => 'czarny',
-            'reserved' => 0,
             'file'     => 'images/audi.jpg',
             'slug'     => 'audi-q7',
         ]);
@@ -66,7 +62,6 @@ class CarsSeeder extends Seeder
             'mileage'  => '312 052',
             'price'    => 259,
             'colour'   => 'biały',
-            'reserved' => 0,
             'file'     => 'images/alfa-romeo.jpg',
             'slug'     => 'alfa-romeo-giulietta',
         ]);

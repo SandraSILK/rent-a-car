@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Reservation\CreateReservationRequest;
+use App\Http\Requests\Reservation\StoreReservationRequest;
 use App\Notifications\Reservation\DeleteReservation;
 use App\Notifications\Reservation\SendReservation;
 use App\Reservation;
@@ -18,7 +18,7 @@ class ReservationController extends Controller
         ]);
     }
 
-    public function store(CreateReservationRequest $request)
+    public function store(StoreReservationRequest $request)
     {
         $data = $request->only([
             'name',
@@ -62,7 +62,6 @@ class ReservationController extends Controller
         }
 
         flash('Błędne dane.', 'danger');
-
         return redirect('reservation/reservations.remove-reservation');
     }
 }

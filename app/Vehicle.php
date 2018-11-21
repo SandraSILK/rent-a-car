@@ -15,7 +15,6 @@ class Vehicle extends Model
         'price',
         'mileage',
         'colour',
-        'reserved',
         'file',
         'slug',
     ];

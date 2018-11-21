@@ -4,14 +4,13 @@ const today = new Date().toISOString().split('T')[0];
 
 dateTo.readOnly  = true;
 
-dateFrom.onclick = function() {
-	dateFrom.setAttribute('min', today);
-	dateTo.readOnly  = false;
-};
+dateFrom.onchange = function() {
+    dateTo.setAttribute('min', dateFrom.value);
+}
 
-dateTo.onclick = function() {
-	var newDate = dateFrom.value;
-	dateTo.setAttribute('min', newDate);
+dateFrom.onclick = function() {
+    dateFrom.setAttribute('min', today);
+    dateTo.readOnly = false;
 }
 
 

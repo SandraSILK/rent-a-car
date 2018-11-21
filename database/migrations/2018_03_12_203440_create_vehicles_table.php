@@ -21,7 +21,6 @@ class CreateVehiclesTable extends Migration
             $table->string('mileage');
             $table->integer('price');
             $table->string('colour');
-            $table->integer('reserved');
             $table->string('file');
             $table->string('slug');
         });

@@ -36,7 +36,6 @@ class VehicleController extends Controller
             'mileage',
             'price',
             'colour',
-            'reserved',
         ]);
 
         $data['file'] = $this->saveFile($request->file('file'));
@@ -69,7 +68,6 @@ class VehicleController extends Controller
             'mileage',
             'price',
             'colour',
-            'reserved',
         ]);
 
         if ($request->hasFile('file')) {

@@ -1,4 +1,3 @@
-
 <h6>Admin Tool</h6>
 <ul>
     <li><a href="{{ route('admin.car.index') }}" class="btn-dash {{ Route::is('admin.car.*') ? 'active' : '' }}">Pojazdy</a>
