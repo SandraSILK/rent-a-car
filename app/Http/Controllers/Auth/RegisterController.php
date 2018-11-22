@@ -63,7 +63,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd('ssss');
         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name'  => $data['last_name'],
@@ -74,7 +73,7 @@ class RegisterController extends Controller
             'role'       => 2,
             'send'       => Carbon::now(),
         ]);
-        // return $user;
+
         if ($user) {
             $user->notify(new ConfirmRegistration());
             flash('Na podany email został wysłany link aktywacyjny.', 'success');
