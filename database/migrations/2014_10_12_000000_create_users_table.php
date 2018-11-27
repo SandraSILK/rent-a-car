@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('role');
+            $table->integer('permission');
             $table->string('api_token')->unique();
 
             $table->rememberToken();

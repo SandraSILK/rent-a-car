@@ -70,7 +70,7 @@ class RegisterController extends Controller
             'email'      => $data['email'],
             'api_token'  => Hash::make($data['email']),
             'password'   => Hash::make($data['password']),
-            'role'       => 2,
+            'permission' => 2,
             'send'       => Carbon::now(),
         ]);
 

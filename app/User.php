@@ -20,7 +20,7 @@ class User extends Authenticatable
         'phone',
         'email',
         'password',
-        'role',
+        'permission',
         'api_token',
         'remember_token',
         'confirmation',
