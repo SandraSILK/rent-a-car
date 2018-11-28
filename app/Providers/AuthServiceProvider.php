@@ -16,7 +16,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
-        // User::class => UserPolicy::class
     ];
 
     /**
@@ -36,6 +35,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->permission == 1 /*||
                 $user->role == 2;*/
             ;
+        });
+
+        Gate::define('accountant', function ($user) {
+            return $user->permission == 2;
         });
     }
 }

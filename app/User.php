@@ -9,6 +9,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    // 0 - Admin
+    // 1 - User
+    // 2 - Accountant
+
     /**
      * The attributes that are mass assignable.
      *

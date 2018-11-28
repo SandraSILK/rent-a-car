@@ -10,8 +10,11 @@
                 @endif
             </ol>
         </li>
-    @endif
+    @endcan
     <li>
-        <a href="#" class="btn-dash">Zarządzaj rezerwacjami</a>
+        <a href="#" class="btn-dash">Rezerwacje</a>
     </li>
+    <li>
+        <a href="#" class="btn-dash">Rozliczeniaa</a>
+    </li>   
 </ul>

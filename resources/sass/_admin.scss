@@ -1,18 +1,39 @@
 .dashboard {
     header {
-        background: $dashbord-aside;
+        background: $dashboard-header;
         padding: 10px 20px;
+        color: $dashboard-main;
+
+        a,
+        input {
+            color: $dashboard-main;
+        }
+
+        input {
+            margin-bottom: 4px;
+        }
     }
 
     nav {
-        background: $dashbord-aside;
-        min-height: calc(100vh - 56px);
-        padding: 10px 20px;
+        // background: $dashboard-aside;
+        // min-height: calc(100vh - 56px);
+        // padding: 10px 20px;
+        background: $main-bg;
+
+        a {
+            color: $dashboard-main;
+            letter-spacing: .1em;
+            transition: text-shadow .3s;
+
+            &:hover {;
+                text-shadow: 0 0 .15px $dashboard-main, 0 0 .15px $dashboard-main
+            }
+        }
     }
 
     .dashboard-content {
-        background: $dashbord-main;
-        box-shadow: inset 10px 10px 10px -5px #777;
+        background: $dashboard-main;
+        // box-shadow: inset 10px 10px 10px -5px #777;
         padding: 20px 20px;
     }
 
@@ -39,7 +60,7 @@
         }
 
         &.active {
-            background: $dashbord-main;
+            background: $dashboard-main;
         }
     }
 
