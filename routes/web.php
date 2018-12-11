@@ -14,8 +14,9 @@ Route::group(['as' => 'reservation.', 'prefix' => 'reservation'], function () {
 });
 
 Route::namespace('Auth')->group(function() {
+    Route::name('register.store')->post('/register-store', 'RegisterController@store');
     Route::name('register.show')->get('/confirm-show', 'RegisterController@show');
-    Route::name('register.confirm')->get('/confirm-register-{apiToken}', 'RegisterController@confirm');
+    Route::name('register.verify')->get('/verify/{token}', 'RegisterController@verify');
 });
 
 

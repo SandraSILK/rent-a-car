@@ -13,7 +13,7 @@
                         <div class="form-group justify-content-center row">
                             <label for="email" class="col-md-10 col-form-label">Adres e-mail</label>
                             <div class="col-md-10">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">

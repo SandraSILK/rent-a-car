@@ -9,7 +9,7 @@
         {{ Form::label('model', 'Model')}}
         {{ Form::text('model', null, [
             'class'    => 'form-control',
-                    ]) }}
+        ]) }}
     </div>
 </div>
 <div class="form-group row">

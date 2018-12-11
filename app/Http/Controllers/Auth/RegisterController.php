@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Events\RegisteredUser;
 use App\Http\Controllers\Controller;
-use App\Notifications\Registration\ConfirmRegistration;
+use App\Http\Requests\Register\StoreUserRequest;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -40,76 +41,40 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'first_name' => 'required|string|max:255',
-            'last_name'  => 'required|string|max:255',
-            'email'      => 'required|string|email|max:255|unique:users',
-            'phone'      => 'required',
-            'password'   => 'required|string|min:6|confirmed',
-        ]);
-    }
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function store(StoreUserRequest $request)
     {
-        $user = User::create([
-            'first_name' => $data['first_name'],
-            'last_name'  => $data['last_name'],
-            'phone'      => $data['phone'],
-            'email'      => $data['email'],
-            'api_token'  => Hash::make($data['email']),
-            'password'   => Hash::make($data['password']),
-            'permission' => 2,
-            'send'       => Carbon::now(),
+        $data = $request->only([
+            'first_name',
+            'last_name',
+            'phone',
+            'email',
         ]);
 
+        $data['api_token']  = str_replace('/', rand(), Hash::make($request->email));
+        $data['password']   = Hash::make($request->password);
+        $data['permission'] = 2;
+        $data['send']       = Carbon::now();
+
+        $user = User::create($data);
         if ($user) {
-            $user->notify(new ConfirmRegistration());
+            event(new RegisteredUser($user));
             flash('Na podany email został wysłany link aktywacyjny.', 'success');
 
-            return view('sites/auth/register/show');
+            return view('welcome');
         };
 
         flash('Ups! Coś poszło nie tak, prosimy o kontakt z Działem Pomocy Rent A Car.', 'danger');
-        return view('sites/auth/register/show');
-    }
-
-    public function confirm($apiToken)
-    {
-        $user = User::where('api_token', $apiToken)->first();
-
-        if ($user) {
-            flash('Konto zostało aktywowane. Życzymy szerokiej drogi.', 'success');
-            return redirect(route('register.show'));
-        }
-
-        flash('Ups! Coś poszło nie tak, prosimy o kontakt z Działem Pomocy Rent A Car.', 'danger');
-        return redirect(route('register.show'));
+        return view('welcome');
     }
 
     public function show()
     {
-        return view('sites/auth/register/show');
+        flash('Konto zostało aktywowane. Życzymy szerokiej drogi.', 'success');
+        return view('welcome');
     }
-
-    // public function register(Request $request)
-    // {
-    //     $this->validator($request->all())->validate();
-
-    //     // event(new Registered($user = $this->create($request->all())));
-
-    //     return redirect()->route('show')
-    //         ->with(['success' => 'Congratulations! your account is registered, you will shortly receive an email to activate your account.']);
-    // }
 }

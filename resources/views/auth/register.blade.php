@@ -7,7 +7,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 login">
                 <h6>Rejestracja</h6>
-                <form method="POST" action="{{ route('register.create') }}">
+                <form method="POST" action="{{ route('register.store') }}">
                     @csrf
 
                     <div class="form-group row">
