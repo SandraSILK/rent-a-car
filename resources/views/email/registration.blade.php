@@ -13,3 +13,10 @@ Your registered email-id is {{$user['email']}} , Please click on the below link 
 </body>
 
 </html>
+
+//@todo!
+// - zmienić token po aktywowaniu konta // może jako osobną klasę, bo będzie to robione często
+// - dodania w kernelu joba który będzie sprawdzać, czy konto zostało aktywowane po wysłaniu maila, skorzystaj z daty wysłania maila i czy jest update_at u usera
+// - zrób ładego maila :)
+// - posprzątaj w bazie danych, bo syf 
+// - dodaj loader na wysylanie maila

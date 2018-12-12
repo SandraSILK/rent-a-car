@@ -7,14 +7,12 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 login">
                 <h6>Rejestracja</h6>
-                <form method="POST" action="{{ route('register.store') }}">
+                <form id="js-form-register" method="POST" action="{{ route('register.store') }}">
                     @csrf
-
                     <div class="form-group row">
-                        <label for="first_name" class="col-md-4 col-form-label text-md-right">Imię</label>
-
+                        <label for="js-first-name" class="col-md-4 col-form-label text-md-right">Imię</label>
                         <div class="col-md-6">
-                            <input id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" required autofocus>
+                            <input id="js-first-name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" required autofocus>
 
                             @if ($errors->has('first_name'))
                                 <span class="invalid-feedback">
@@ -25,10 +23,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="last_name" class="col-md-4 col-form-label text-md-right">Nazwisko</label>
+                        <label for="js-last-name" class="col-md-4 col-form-label text-md-right">Nazwisko</label>
 
                         <div class="col-md-6">
-                            <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" required autofocus>
+                            <input id="js-last-name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" required autofocus>
 
                             @if ($errors->has('last_name'))
                                 <span class="invalid-feedback">
@@ -39,10 +37,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="phone" class="col-md-4 col-form-label text-md-right">Telefon</label>
+                        <label for="js-tel" class="col-md-4 col-form-label text-md-right">Telefon</label>
 
                         <div class="col-md-6">
-                            <input id="phone" type="number" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
+                            <input id="js-tel" type="number" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
 
                             @if ($errors->has('phone'))
                                 <span class="invalid-feedback">
@@ -53,10 +51,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="email" class="col-md-4 col-form-label text-md-right">E-mail</label>
+                        <label for="js-email" class="col-md-4 col-form-label text-md-right">E-mail</label>
 
                         <div class="col-md-6">
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                            <input id="js-email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback">
@@ -67,10 +65,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Hasło</label>
+                        <label for="js-password" class="col-md-4 col-form-label text-md-right">Hasło</label>
 
                         <div class="col-md-6">
-                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                            <input id="js-password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback">
@@ -81,10 +79,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Powtórz hasło</label>
+                        <label for="js-password-confirm" class="col-md-4 col-form-label text-md-right">Powtórz hasło</label>
 
                         <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <input id="js-password-confirm" type="password" class="form-control" name="password_confirmation" required>
                         </div>
                     </div>
 
@@ -101,3 +99,6 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+    <script src="{{ 'js/registerUser.js' }}"></script>
+@endpush
