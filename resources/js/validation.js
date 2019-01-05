@@ -1,9 +1,6 @@
 class Validation {
-    checkName(text) {
-        const reg = /\d+/g;
-        let found = text.match(reg);
-
-        if (found != null) {
+    checkText(text) {
+        if (text.match(/\d+/g) != null) {
             return true;
         }
         return false;
@@ -22,8 +19,12 @@ class Validation {
         console.log('bla bla bla haslo2 ' + confirm);
     }
 
-    template(message) {
-        return `<div class="error"><strong>${message}</strong></div>`;
+    template(input, message) {
+        input.nextSibling.remove();
+        const element = document.createElement('div');
+        element.innerHTML = `<strong>${message}</strong>`;
+        element.classList.add('error');
+        input.parentNode.insertBefore(element, input.nextSibling);
     }
 }
 

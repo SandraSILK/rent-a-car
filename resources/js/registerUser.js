@@ -1,28 +1,61 @@
-let validation = require('./validation');
+const validation = require('./validation');
+const _ = require('lodash');
 
-document.getElementById('js-form-register').addEventListener('submit', function(event) {
-    event.preventDefault();
+let Validation = validation.Validation;
+let valid = new Validation();
 
-    const first_name = document.getElementById('js-first-name').value;
-    const last_name = document.getElementById('js-last-name').value;
-    const tel = document.getElementById('js-tel').value;
-    const email = document.getElementById('js-email').value;
-    const password = document.getElementById('js-password').value;
-    const confirm = document.getElementById('js-password-confirm').value;
+const first_name = document.getElementById('js-first-name');
+const last_name = document.getElementById('js-last-name');
+const tel = document.getElementById('js-tel');
+const email = document.getElementById('js-email').value;
+const password = document.getElementById('js-password').value;
+const confirm = document.getElementById('js-password-confirm').value;
 
-    let Validation = validation.Validation;
-    let form = new Validation();
+first_name.addEventListener('input', _.debounce(checkText, 500));
+// last_name.addEventListener('input', _.debounce(checkText, 100));
+// $('#js-first-name').keyup(_.debounce(checkText, 5000));
 
-    if (form.checkName(first_name)) {
-        let template = form.template('Oh nie! Imię jest inwalidą');
-        let input = document.getElementById('js-first-name');
-        let element = document.createElement('div');
-        console.log(element.innerHTML = template);
-        input.appendChild(template);
+function myFun() {
+    console.log('dupa');
+}
+
+function checkText() {
+    if (valid.checkText(first_name.value)) {
+        valid.template(first_name, 'Oh nie! Imię jest inwalidą');
     }
-    // form.checkName(last_name);
-    // form.checkTel(tel);
-    // form.checkEmail(email);
-    // form.checkConfirm(password, confirm);
 
-})
+    if (valid.checkText(last_name.value)) {
+        valid.template(last_name, 'Oh nie! Imię jest inwalidą');
+    }
+}
+
+// document.getElementById('js-form-register').addEventListener('submit', function(event) {
+//     event.preventDefault();
+
+//     const first_name = document.getElementById('js-first-name');
+//     const last_name = document.getElementById('js-last-name');
+//     const tel = document.getElementById('js-tel');
+//     const email = document.getElementById('js-email').value;
+//     const password = document.getElementById('js-password').value;
+//     const confirm = document.getElementById('js-password-confirm').value;
+
+//     let Validation = validation.Validation;
+//     let valid = new Validation();
+
+//     if (valid.checkText(first_name.value)) {
+//         valid.template(first_name, 'Oh nie! Imię jest inwalidą');
+//     }
+
+//     if (valid.checkText(last_name.value)) {
+//         valid.template(last_name, 'Oh nie! Nazwisko nie jest poprawne!');
+//     }
+
+//     if (valid.checkTel(tel.value)) {
+//         valid.template(tel, 'Oh nie! Numer telefonu nie jest poprawny!');
+//     }
+//     // form.checkName(last_name);
+//     // form.checkTel(tel);
+//     // form.checkEmail(email);
+//     // form.checkConfirm(password, confirm);
+
+// })
