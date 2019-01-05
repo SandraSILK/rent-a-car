@@ -12,12 +12,7 @@ const password = document.getElementById('js-password').value;
 const confirm = document.getElementById('js-password-confirm').value;
 
 first_name.addEventListener('input', _.debounce(checkText, 500));
-// last_name.addEventListener('input', _.debounce(checkText, 100));
-// $('#js-first-name').keyup(_.debounce(checkText, 5000));
-
-function myFun() {
-    console.log('dupa');
-}
+last_name.addEventListener('input', _.debounce(checkText, 500));
 
 function checkText() {
     if (valid.checkText(first_name.value)) {
