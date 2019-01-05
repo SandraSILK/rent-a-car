@@ -4,53 +4,46 @@ const _ = require('lodash');
 let Validation = validation.Validation;
 let valid = new Validation();
 
-const first_name = document.getElementById('js-first-name');
-const last_name = document.getElementById('js-last-name');
+const firstName = document.getElementById('js-first-name');
+const lastName = document.getElementById('js-last-name');
 const tel = document.getElementById('js-tel');
-const email = document.getElementById('js-email').value;
-const password = document.getElementById('js-password').value;
-const confirm = document.getElementById('js-password-confirm').value;
+const email = document.getElementById('js-email');
+const password = document.getElementById('js-password');
+const confirm = document.getElementById('js-password-confirm');
 
-first_name.addEventListener('input', _.debounce(checkText, 500));
-last_name.addEventListener('input', _.debounce(checkText, 500));
+firstName.addEventListener('input', _.debounce(checkFirstName, 500));
+lastName.addEventListener('input', _.debounce(checkLastName, 500));
+tel.addEventListener('input', _.debounce(checkTel, 500));
+email.addEventListener('input', _.debounce(checkEmail, 500));
 
-function checkText() {
-    if (valid.checkText(first_name.value)) {
-        valid.template(first_name, 'Oh nie! Imię jest inwalidą');
-    }
-
-    if (valid.checkText(last_name.value)) {
-        valid.template(last_name, 'Oh nie! Imię jest inwalidą');
+function checkFirstName() {
+    if (valid.checkText(firstName.value)) {
+        valid.template(firstName, 'Oh nie! Imię jest inwalidą');
+    } else {
+        valid.removeTemplate(firstName);
     }
 }
 
-// document.getElementById('js-form-register').addEventListener('submit', function(event) {
-//     event.preventDefault();
+function checkLastName() {
+    if (valid.checkText(lastName.value)) {
+        valid.template(lastName, 'Oh nie! Nazwisko jest inwalidą');
+    } else {
+        valid.removeTemplate(lastName);
+    }
+}
 
-//     const first_name = document.getElementById('js-first-name');
-//     const last_name = document.getElementById('js-last-name');
-//     const tel = document.getElementById('js-tel');
-//     const email = document.getElementById('js-email').value;
-//     const password = document.getElementById('js-password').value;
-//     const confirm = document.getElementById('js-password-confirm').value;
+function checkTel() {
+    if (valid.checkTel(tel.value)) {
+        valid.template(tel, 'Oh nie! Numer telefonu nie jest poprawny!');
+    } else {
+        valid.removeTemplate(tel);
+    }
+}
 
-//     let Validation = validation.Validation;
-//     let valid = new Validation();
-
-//     if (valid.checkText(first_name.value)) {
-//         valid.template(first_name, 'Oh nie! Imię jest inwalidą');
-//     }
-
-//     if (valid.checkText(last_name.value)) {
-//         valid.template(last_name, 'Oh nie! Nazwisko nie jest poprawne!');
-//     }
-
-//     if (valid.checkTel(tel.value)) {
-//         valid.template(tel, 'Oh nie! Numer telefonu nie jest poprawny!');
-//     }
-//     // form.checkName(last_name);
-//     // form.checkTel(tel);
-//     // form.checkEmail(email);
-//     // form.checkConfirm(password, confirm);
-
-// })
+function checkEmail() {
+    if (valid.checkEmail(email.value)) {
+        valid.template(email, 'Podany adres nie jest poprawny.');
+    } else {
+        valid.removeTemplate(email);
+    }
+}

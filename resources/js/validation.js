@@ -1,17 +1,14 @@
 class Validation {
     checkText(text) {
-        if (text.match(/\d+/g) != null) {
-            return true;
-        }
-        return false;
+        return text.match(/\d+/g) != null;
     }
 
     checkEmail(email) {
-        console.log('bla bla bla email ' + email);
+        return email.match(/\w+@\w+\.\w+/g) == null;
     }
 
     checkTel(tel) {
-        console.log('bla bla bla telefon ' + tel);
+        return tel.match(/\d+/g) == null;
     }
 
     checkConfirm(password, confirm) {
@@ -20,11 +17,17 @@ class Validation {
     }
 
     template(input, message) {
-        input.nextSibling.remove();
+        this.removeTemplate(input);
         const element = document.createElement('div');
         element.innerHTML = `<strong>${message}</strong>`;
         element.classList.add('error');
         input.parentNode.insertBefore(element, input.nextSibling);
+    }
+
+    removeTemplate(input) {
+        if (input.nextSibling != null) {
+            input.nextSibling.remove();
+        }
     }
 }
 
