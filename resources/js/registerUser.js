@@ -18,7 +18,7 @@ email.addEventListener('input', _.debounce(checkEmail, 500));
 
 function checkFirstName() {
     if (valid.checkText(firstName.value)) {
-        valid.template(firstName, 'Oh nie! Imię jest inwalidą');
+        valid.template(firstName, 'Imię nie jest poprawne.');
     } else {
         valid.removeTemplate(firstName);
     }
@@ -26,7 +26,7 @@ function checkFirstName() {
 
 function checkLastName() {
     if (valid.checkText(lastName.value)) {
-        valid.template(lastName, 'Oh nie! Nazwisko jest inwalidą');
+        valid.template(lastName, 'Nazwisko nie jest poprawne.');
     } else {
         valid.removeTemplate(lastName);
     }
@@ -34,7 +34,7 @@ function checkLastName() {
 
 function checkTel() {
     if (valid.checkTel(tel.value)) {
-        valid.template(tel, 'Oh nie! Numer telefonu nie jest poprawny!');
+        valid.template(tel, 'Numer telefonu nie jest poprawny!');
     } else {
         valid.removeTemplate(tel);
     }

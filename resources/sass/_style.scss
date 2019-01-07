@@ -138,6 +138,10 @@ body {
     }
 }
 
+.js-error {
+    color: map-get($colors, danger);
+}
+
 .error-validation {
     input {
         border: 1px solid map-get($colors, danger);

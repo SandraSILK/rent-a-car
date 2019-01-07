@@ -11,16 +11,11 @@ class Validation {
         return tel.match(/\d+/g) == null;
     }
 
-    checkConfirm(password, confirm) {
-        console.log('bla bla bla haslo ' + password);
-        console.log('bla bla bla haslo2 ' + confirm);
-    }
-
     template(input, message) {
         this.removeTemplate(input);
         const element = document.createElement('div');
         element.innerHTML = `<strong>${message}</strong>`;
-        element.classList.add('error');
+        element.classList.add('js-error');
         input.parentNode.insertBefore(element, input.nextSibling);
     }
 
