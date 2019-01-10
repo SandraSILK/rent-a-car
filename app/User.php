@@ -28,7 +28,6 @@ class User extends Authenticatable
         'api_token',
         'remember_token',
         'confirmation',
-        'send',
         'email_verified_at'
     ];
 

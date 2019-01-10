@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Events\RegisteredUser;
+use App\Helpers\Token;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Register\StoreUserRequest;
 use App\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -55,10 +55,9 @@ class RegisterController extends Controller
             'email',
         ]);
 
-        $data['api_token']  = str_replace('/', rand(), Hash::make($request->email));
+        $data['api_token']  = Token::generate();
         $data['password']   = Hash::make($request->password);
         $data['permission'] = 2;
-        $data['send']       = Carbon::now();
 
         $user = User::create($data);
         if ($user) {
